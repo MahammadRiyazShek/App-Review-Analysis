@@ -17,23 +17,6 @@ The dataset consists of user reviews collected from various app stores. Each rev
 - `App Name`: The name of the app being reviewed.
 - `Date`: The date when the review was posted.
 
-## Installation
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    ```
-
-2. Navigate to the project directory:
-    ```bash
-    cd your-repo-name
-    ```
-
-3. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
 ## Usage
 
 1. **Data Preprocessing**: Prepare your data for analysis.
@@ -63,10 +46,8 @@ The dataset consists of user reviews collected from various app stores. Each rev
 ## Project Structure
 
 - `data/`: Contains raw and processed data files.
-- `notebooks/`: Jupyter notebooks for exploratory data analysis.
 - `scripts/`: Python scripts for various analysis tasks.
 - `results/`: Output files and reports.
-- `requirements.txt`: List of dependencies required for the project.
 - `README.md`: Project documentation file.
 
 ## Contributing
