@@ -1,7 +1,7 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import matplotlib.pyplot as plt
 
 # Define your apps data
 app_data = {
@@ -24,13 +24,13 @@ for index, row in app_df.iterrows():
     sentiment_scores = sentiment_analyzer.polarity_scores(row['Sentiment'])
     app_df.at[index, 'Sentiment Score'] = sentiment_scores
 
-# Data cleaning
+# Data cleaning: Round off sentiment scores
 app_df['Sentiment Score'] = app_df['Sentiment Score'].apply(lambda x: {k: np.round(v, 2) for k, v in x.items()})
 
 # Data visualization
 # Pie chart for sentiment
 sentiment_compound = app_df['Sentiment Score'].apply(lambda x: x['compound'])
-plt.pie([sentiment_compound.sum(), 1 - sentiment_compound.sum()], labels=['Positive Sentiment', 'Negative Sentiment'])
+plt.pie([sentiment_compound.sum(), 1 - sentiment_compound.sum()], labels=['Positive Sentiment', 'Negative Sentiment'], autopct='%1.1f%%')
 plt.title('Sentiment Analysis')
 plt.show()
 
@@ -38,7 +38,8 @@ plt.show()
 payments = app_df['Payment Method'].value_counts()
 features = app_df['Features'].value_counts()
 
-plt.figure(figsize=(10,5))
+plt.figure(figsize=(10, 5))
+
 plt.subplot(1, 2, 1)
 plt.bar(payments.index, payments.values)
 plt.title('Payment Method')
@@ -50,6 +51,7 @@ plt.bar(features.index, features.values)
 plt.title('Features')
 plt.xlabel('Features')
 plt.ylabel('Count')
+
 plt.tight_layout()
 plt.show()
 
@@ -83,7 +85,7 @@ print(competition_df)
 
 # Visualization of competitive analysis
 competitive_advantage_counts = competition_df['Competitive Advantage'].apply(lambda x: len(x)).value_counts()
-plt.figure(figsize=(5,3))
-plt.pie(competitive_advantage_counts.values, labels=competitive_advantage_counts.index)
+plt.figure(figsize=(5, 3))
+plt.pie(competitive_advantage_counts.values, labels=competitive_advantage_counts.index, autopct='%1.1f%%')
 plt.title('Competitive Advantage')
 plt.show()
